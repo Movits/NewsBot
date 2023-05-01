@@ -62,7 +62,8 @@ async def news(ctx):
         else:
             raise KeyError('articles')
 
-        await ctx.send(news_msg)
+        embed = discord.Embed(description=news_msg)
+        await ctx.send(embed=embed)
 
     except Exception as e:
         print(f"Error fetching news: {e}")
