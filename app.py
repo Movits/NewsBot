@@ -71,8 +71,4 @@ async def news(ctx):
         print("World response:", world_articles)
         await ctx.send("Error fetching news. Please try again later.")
 
-@bot.command()
-async def hello(ctx):
-    await ctx.send("Hello!")
-
 bot.run(os.getenv('DISCORD_BOT_TOKEN'))
