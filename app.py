@@ -27,6 +27,11 @@ async def get_articles(country):
     else:
         return None
 
+def format_news(news_dict):
+    title = news_dict['title']
+    url = news_dict['url']
+    return f"[{title}]({url})"
+
 @bot.command()
 async def news(ctx):
     print("News command received")
@@ -42,7 +47,7 @@ async def news(ctx):
             response_brazil = brazil_articles
             brazil_title = response_brazil[0].get('title', 'N/A')
             brazil_url = response_brazil[0].get('url', 'N/A')
-            news_msg += f"**{brazil_title}**\n<{brazil_url}>\n\n"
+            news_msg += f"[**{brazil_title}**]({brazil_url})\n\n"
         else:
             raise KeyError('articles')
 
@@ -50,7 +55,7 @@ async def news(ctx):
             response_argentina = argentina_articles
             argentina_title = response_argentina[0].get('title', 'N/A')
             argentina_url = response_argentina[0].get('url', 'N/A')
-            news_msg += f"**{argentina_title}**\n<{argentina_url}>\n\n"
+            news_msg += f"[**{argentina_title}**]({argentina_url})\n\n"
         else:
             raise KeyError('articles')
 
@@ -58,7 +63,7 @@ async def news(ctx):
             response_world = world_articles
             world_title = response_world[0].get('title', 'N/A')
             world_url = response_world[0].get('url', 'N/A')
-            news_msg += f"**{world_title}**\n<{world_url}>"
+            news_msg += f"[**{world_title}**]({world_url})"
         else:
             raise KeyError('articles')
 
